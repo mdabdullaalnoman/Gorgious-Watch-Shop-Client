@@ -34,9 +34,6 @@ const Navbar = () => {
 
                 <nav className={isActive ? 'navbar active' : 'navbar'}>
                     <Link to="/home">Home</Link>
-                    <Link to="/category">Category</Link>
-                    <Link to="/mobile-collection">Product</Link>
-                    <Link to="/shiping">Shiping</Link>
                     <Link to="/login">Login</Link>
                 </nav>
 

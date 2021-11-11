@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import Home from './Pages/Home/Home';
+import Login from './Pages/Login/Login';
 import MyOrder from './Pages/MyOrder/MyOrder';
 import NoFound from './Pages/NotFound/NoFound';
 
@@ -18,6 +19,9 @@ const App = () => {
         </Route>
         <Route path="/myOrder">
           <MyOrder />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="*">
           <NoFound />
