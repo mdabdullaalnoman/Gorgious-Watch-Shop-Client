@@ -1,8 +1,46 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-transform: capitalize;
+  outline: none;
+
+  border: none;
+  text-decoration: none !important;
+  transition: all .2s linear;
+}
+
+:root {
+  --white: #ffff;
+  --violet: #e02c6d;
+  --black: #1a202c;
+  --red: #d62c27;
+  --primary-light: #fff2f1;
+  --lightBlue: #8cc2dc;
+  --border: #594556;
+  --yellow: #eeeaa5;
+  --bg: #17161a;
+  --footerText: #33567d;
+  --footerLink: #4b5063;
+}
+
+*::selection {
+  color: #fff;
+  background-color: #000;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden; 
+  scroll-padding-top: 6rem;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,3 +49,107 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/*-------------------------------------
+ media queries
+------------------------------------- */
+@media (max-width:1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media(max-width:991px) {
+
+  .header-1,
+  .header-2,
+  .header-3 {
+    padding: 2rem;
+  }
+}
+
+@media(max-width:768px) {
+  #menu-bar {
+    display: initial !important;
+  }
+  .header-3 .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    background: var(--black);
+    border-top: .1rem solid rgb(14, 9, 9);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); */
+  }
+
+  .header-3 .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%) !important;
+  }
+
+  .header-3 .navbar a {
+    display: block;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: .5rem;
+    border: .1rem solid rgb(146, 243, 146);
+    background: var(--black);
+    width: 100%;
+    text-align: center;
+  }
+
+  .header-2 {
+    flex-flow: column;
+  }
+
+  .header-2 .search-bar-container {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .header-1 {
+    display: none;
+  }
+
+  .card-footer {
+    flex-direction: column;
+  }
+
+}
+
+@media(max-width:498px) {
+  html {
+    font-size: 50%;
+  }
+  .header-1{
+    justify-content: center !important;
+  }
+  .header-contract{
+  display: none;
+  }
+  .sari-warper { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)) !important;
+      padding: .5rem .5rem !important;
+  }
+  .product-details{
+    display: grid;
+    grid-template-columns: 1fr !important;
+    padding: 2rem 2%;
+ }
+
+  footer {
+    padding: 3rem 2%;
+  }
+
+  .twitter-widget {
+    display: none;
+  }
+
+  .footer-warper {
+    grid-template-columns: 1fr !important;
+  }
+}
+

@@ -1,0 +1,17 @@
+.footer-warp{
+    background: var(--bg);
+    padding: 5rem 0;
+}
+.footer-warp p{
+    color: var(--footerLink);
+    font-size: 1.8rem;
+}
+.footer-warp h2{
+    color: var(--footerText);
+    font-size: 3rem;
+}
+.footer-warp a{
+    color: var(--footerLink);
+    font-size: 1.8rem;
+    padding: .5rem 0;
+}

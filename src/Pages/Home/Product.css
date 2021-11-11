@@ -1,0 +1,24 @@
+.product{
+    text-align: center;
+}
+.product img{
+    width: 100%;
+}
+.product h4 {
+    font-size: 1.5rem;
+    color: var(--footerLink);
+    padding-top: 2rem;
+}
+.product p{
+    font-size: 2rem;
+    color: var(--footerText);
+    padding: 1rem;
+}
+.product button{
+    padding: 1rem 3rem;
+    font-weight: bold;
+}
+.product button:hover{
+    opacity: 80%;
+}
+

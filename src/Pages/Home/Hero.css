@@ -1,0 +1,39 @@
+.hero-warp{
+   padding: 15% 0;
+}
+.hero{
+    border: 10px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.603);
+}
+.hero-warp div h1{
+    color: var(--lightBlue);
+    font-size: 5rem;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.hero-warp div p{
+    color: var(--white);
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+.hero-warp div p span{
+    color: var(--yellow);
+}
+.hero-warp div h6{
+    color: var(--white);
+    font-size: 3rem;
+}
+.hero-warp div h4{
+    color: var(--white);
+    font-size: 2rem;
+    padding: 2rem 0;
+}
+.hero-warp div button{
+    padding: 2rem 5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.hero-warp div button:hover{
+    opacity: 90%;
+}

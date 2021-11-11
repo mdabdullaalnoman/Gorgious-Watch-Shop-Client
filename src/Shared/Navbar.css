@@ -1,0 +1,127 @@
+
+
+
+/*-----------------------------
+ Header section start 
+-------------------------------*/
+
+.header-2,
+.header-3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 9%;
+}
+
+.header-3 {
+  /* background: var(--black); */
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.493);
+  position: relative;
+  z-index: 1000;
+}
+
+
+.header-2 .logo i {
+  margin-right: 1rem;
+  color: var(--red);
+  animation: bounce 2s linear infinite alternate;
+}
+
+.header-2 .logo:hover i {
+  transform: scale(1.1);
+  color: var(--violet);
+}
+
+.header-2 .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 3rem;
+  color: var(--black);
+}
+
+.header-2 .search-bar-container {
+  display: flex;
+  width: 70%;
+  float: right;
+  padding: 1rem;
+  background: rgb(255, 255, 255, .2);
+  border-radius: .5rem;
+  border: 2px solid var(--red);
+}
+
+.header-2 .search-bar-container #search-bar {
+  width: 100%;
+  background: none;
+  text-transform: none;
+  color: var(--white);
+  font-size: 1.7rem;
+}
+
+.header-2 .search-bar-container #search-bar::placeholder {
+  text-transform: capitalize;
+  color: var(--black);
+}
+
+.header-2 .search-bar-container label {
+  color: var(--red);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 .5rem;
+
+
+}
+
+
+.header-2 .search-bar-container label:hover {
+  color: var(--black);
+  transform: scale(.9);
+}
+
+.header-3 .navbar a {
+  color: var(--white);
+  font-size: 2rem;
+  margin-right: 2rem;
+  display: inline-block;
+}
+
+.header-3 .icons a {
+  color: var(--white);
+  font-size: 2.5rem;
+  margin-left: 2rem;
+}
+
+.header-3.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header-3 .navbar a:hover {
+  color: vaar(--red);
+  font-weight: bold;
+}
+
+.header-3 .icons a:hover {
+  color: rgb(167, 28, 28);
+  transform: scale(.9);
+}
+
+.header-3.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#menu-bar {
+  font-size: 2.5rem;
+  color: var(--white);
+  border: .3rem solid var(--white);
+  border-radius: .5rem;
+  padding: .5rem 1.5rem;
+  cursor: pointer;
+  display: none;
+}

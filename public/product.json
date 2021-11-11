@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Analog Waterproof Watch",
+        "price": "212.00",
+        "oldPrice": "4000",
+        "imgUrl":"https://i.imgur.com/zTgmWME.jpg"
+    },
+    {
+        "title": "Power Waterproof Watch",
+        "price": "2199.00",
+        "oldPrice": "5000",
+        "imgUrl":"https://i.imgur.com/JZgIrTk.jpg"
+    },
+    {
+        "title": "Casio Top Watch",
+        "price": "199.00",
+        "oldPrice": "3000",
+        "imgUrl":"https://i.imgur.com/HFtBJiG.jpg"
+    },
+    {
+        "title": "Torrent Rock Watch",
+        "price": "1999.00",
+        "oldPrice": "3800",
+        "imgUrl":"https://i.imgur.com/f4BlK26.jpg"
+    },
+    {
+        "title": "Samara casual Watch",
+        "price": "219.00",
+        "oldPrice": "500",
+        "imgUrl":"https://i.imgur.com/rrVIRks.jpg"
+    },
+    {
+        "title": "Onion Waterproof Watch",
+        "price": "2190.00",
+        "oldPrice": "4500",
+        "imgUrl":"https://i.imgur.com/DSPLjQz.jpg"
+    },
+    {
+        "title": "Router Smart Watch",
+        "price": "2193.00",
+        "oldPrice": "4000",
+        "imgUrl":"https://i.imgur.com/e7nQlCZ.jpg"
+    },
+    {
+        "title": "Miasma Hot Watch",
+        "price": "2190.00",
+        "oldPrice": "3000",
+        "imgUrl":"https://i.imgur.com/AmaPzRA.jpg"
+    },
+    {
+        "title": "Capua Hot Watch",
+        "price": "290.00",
+        "oldPrice": "3000",
+        "imgUrl":"https://i.imgur.com/Hakqtpz.jpg"
+    },
+    {
+        "title": "Apple New Watch",
+        "price": "2900.00",
+        "oldPrice": "3000",
+        "imgUrl":"https://i.imgur.com/Hakqtpz.jpg"
+    }
+]

@@ -1,0 +1,19 @@
+.good-watches-warp{
+    background-color: var(--bg);
+}
+.good-watch-content h1{
+ font-size: 4rem;
+ color: var(--white);
+}
+.good-watch-content p{
+    color: var(--footerLink);
+    font-size: 2rem;
+    padding: 3rem 0;
+}
+.good-watch-content button{
+    padding: 2rem 4rem;
+    font-size: 1.8;
+}
+.good-watch-content button:hover{
+    opacity: 80%;
+}
