@@ -30,7 +30,7 @@ const Review = () => {
                 <Grid container spacing={2}>
                     {
                         products.map(pd =>
-                            <Grid item xs={12} sm={6} md={4}>
+                            <Grid key={pd._id} item xs={12} sm={6} md={4}>
                                 <div className="product">
                                     <img src={pd.imgUrl} alt="" />
                                     <h4>{pd.title}</h4>

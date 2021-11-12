@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 import logo from '../media/logo.png';
 import './Navbar.css';
 
 const Navbar = () => {
 
+    const { handleSignOut, user } = useAuth();
+    console.log(user.email);
     // toggle active class on menubar-------------------------------
     const [isActive, setActive] = useState(false);
     const toggleClass = () => {
@@ -17,7 +20,7 @@ const Navbar = () => {
                 {/* Header ---- 2 */}
 
                 <Link to="/home" className="logo">
-                    <img src={logo} alt=""/>
+                    <img src={logo} alt="" />
                 </Link>
 
                 <form action="" className="search-bar-container">
@@ -34,13 +37,19 @@ const Navbar = () => {
 
                 <nav className={isActive ? 'navbar active' : 'navbar'}>
                     <Link to="/home">Home</Link>
-                    <Link to="/login">Login</Link>
+                    {
+                        user.email 
+                            ? <Link to="/login" onClick={handleSignOut}>Logout</Link>
+                            : <Link to="/login">Login</Link>
+                    }
+
                 </nav>
 
                 <div className="icons">
                     <Link to="/home" className="fas fa-shopping-cart"></Link>
                     <Link to="/home" className="fas fa-heart"></Link>
                     <Link to="/home" className="fas fa-user-circle"></Link>
+                    <Link to="/home">{user.displayName}</Link>
                 </div>
             </div>
 

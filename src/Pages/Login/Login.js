@@ -1,13 +1,47 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar';
 import './Login.css';
 
 const Login = () => {
-    // toggle login and register
     const [isLogin, setIsLogin] = useState(false);
+    const [loginInfo, setLoginInfo] = useState({});
+    const { handleRegister, user, handleSignIn } = useAuth();
+    const history = useHistory();
+    const location = useLocation();
+    // console.log(user);
+    // on submit form-----------------------------------------------
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        handleRegisters();
+        handleLogins();
+    }
+
+    // handle register------------------------------- 
+    const handleRegisters = (e) => {
+        handleRegister(loginInfo.email, loginInfo.password, loginInfo.name, history);
+        alert('success full');
+    }
+
+    // handle Login -------------------------------------
+    const handleLogins = (e) => {
+        handleSignIn(loginInfo.email, loginInfo.password, location, history);
+        alert('success full');
+    }
+
+    // get input value ----------------------------------------------
+    const handleLogin = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newUser = { ...loginInfo };
+        newUser[field] = value;
+        setLoginInfo(newUser);
+        console.log(newUser, field, value);
+    }
+    // toggle login and register--------------------------------------
     const handleLoginToggle = (e) => {
         setIsLogin(e.target.checked);
         console.log('clicked');
@@ -28,23 +62,44 @@ const Login = () => {
                         }
                     </div>
 
-                    <form>
-                        <div className="email">
-                            <label htmlFor="email">Email</label><br />
-                            <input type="email" name="email" id="email" placeholder="email" required />
-                        </div>
-                        <div className="password">
-                            <label htmlFor="password">Password</label><br />
-                            <input type="password" name="password" id="password" placeholder="password" autoComplete="off" required />
-                        </div>
+                    <form onSubmit={handleSubmit}>
+
                         {
                             isLogin &&
                             <div className="password">
-                                <label htmlFor="password">Password</label><br />
-                                <input type="password" name="password" id="password" placeholder="password" autoComplete="off" required />
+                                <label htmlFor="name">Name</label><br />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    onChange={handleLogin}
+                                    id="name"
+                                    placeholder="name"
+                                    autoComplete="off"
+                                    required />
                             </div>
                         }
 
+                        <div className="email">
+                            <label htmlFor="email">Email</label><br />
+                            <input
+                                type="email"
+                                name="email"
+                                onChange={handleLogin}
+                                id="email"
+                                placeholder="email"
+                                required />
+                        </div>
+                        <div className="password">
+                            <label htmlFor="password">Password</label><br />
+                            <input
+                                type="password"
+                                name="password"
+                                onChange={handleLogin}
+                                id="password"
+                                placeholder="password"
+                                autoComplete="off"
+                                required />
+                        </div>
 
                         <div className="register-reset">
                             <div className="checkbox" onClick={handleLoginToggle}>
