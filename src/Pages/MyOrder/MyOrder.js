@@ -1,6 +1,7 @@
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { Grid } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,15 +15,47 @@ import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
 
 const drawerWidth = 240;
 
 function MyOrder(props) {
+    const { user } = useAuth();
     const history = useHistory();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [myOrder, setMyOrder] = useState([]);
+
+    // my order (filter by email)------------------------------
+    useEffect(() => {
+        fetch(`http://localhost:5000/parches?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setMyOrder(data))
+
+            .catch(err => console.log(err.message))
+    }, [myOrder]);
+
+
+    // delete products ----------------------------------------
+    const handleParchesDelete = (id) => {
+        const process = true;
+        if (process) {
+            fetch(`http://localhost:5000/parches/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount) {
+                        alert('deleted successfully')
+                    }
+                    else {
+                        alert('something went worng')
+                    }
+                })
+        }
+    }
 
     // handle dashboard route ---------------------------------
     const handleDashboardRoute = (text) => {
@@ -115,9 +148,25 @@ function MyOrder(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography paragraph>
-                    <h1>this is my order page</h1>
-                </Typography>
+
+                <Grid container item spacing={2}>
+
+                    {
+                        myOrder.map(data =>
+                            <Grid item xs={12} md={4}>
+                                <div key={data?._id}>
+                                    <h1>{data?._id}</h1>
+                                    <h2>{data?.name}</h2>
+                                    <h2>{data?.title}</h2>
+                                    <h4>{data?.price}</h4>
+                                    <button onClick={() => handleParchesDelete(data?._id)}>Cancel</button>
+                                </div>
+                            </Grid>
+                        )
+                    }
+
+                </Grid>
+
             </Box>
         </Box>
     );
