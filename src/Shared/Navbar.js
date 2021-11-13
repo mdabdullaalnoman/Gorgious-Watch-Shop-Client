@@ -38,8 +38,12 @@ const Navbar = () => {
                 <nav className={isActive ? 'navbar active' : 'navbar'}>
                     <Link to="/home">Home</Link>
                     {
-                        user.email 
-                            ? <Link to="/login" onClick={handleSignOut}>Logout</Link>
+                        user.email
+                            ?
+                            <>
+                                <Link to="/login" onClick={handleSignOut}>Logout</Link>
+                                <Link to="/dashboard">Dashboard</Link>
+                            </>
                             : <Link to="/login">Login</Link>
                     }
 

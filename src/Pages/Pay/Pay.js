@@ -19,7 +19,7 @@ import { useHistory } from 'react-router';
 
 const drawerWidth = 240;
 
-function MyOrder(props) {
+function Pay(props) {
     const history = useHistory();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -38,7 +38,7 @@ function MyOrder(props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Pay', 'MyOrder', 'Review', 'home', 'Logout'].map((text, index) => (
+                {['Pay', 'MyOrder', 'Review',, 'home' , 'Logout'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -116,14 +116,14 @@ function MyOrder(props) {
             >
                 <Toolbar />
                 <Typography paragraph>
-                    <h1>this is my order page</h1>
+                    <h1>this is pay page</h1>
                 </Typography>
             </Box>
         </Box>
     );
 }
 
-MyOrder.propTypes = {
+Pay.propTypes = {
     /**
      * Injected by the documentation to work in an iframe.
      * You won't need it on your project.
@@ -131,4 +131,4 @@ MyOrder.propTypes = {
     window: PropTypes.func,
 };
 
-export default MyOrder;
+export default Pay;
