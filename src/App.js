@@ -25,9 +25,6 @@ const App = () => {
           <Route exact path="/home">
             <Home></Home>
           </Route>
-          <PrivateRoute path="/myOrder">
-            <MyOrder />
-          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>
@@ -36,15 +33,6 @@ const App = () => {
           </PrivateRoute>
           <PrivateRoute path="/dashboard">
             <Dashboard />
-          </PrivateRoute>
-          <PrivateRoute path="/Pay">
-            <Pay />
-          </PrivateRoute>
-          <PrivateRoute path="/MyOrder">
-            <MyOrder />
-          </PrivateRoute>
-          <PrivateRoute path="/Review">
-            <ReviewUser />
           </PrivateRoute>
           <Route path="/allWatches">
             <AllWatch />

@@ -9,7 +9,7 @@ import './Login.css';
 const Login = () => {
     const [isLogin, setIsLogin] = useState(false);
     const [loginInfo, setLoginInfo] = useState({});
-    const { handleRegister, user, handleSignIn } = useAuth();
+    const { handleRegister, handleSignIn, handleGoogleSignIn } = useAuth();
     const history = useHistory();
     const location = useLocation();
     // console.log(user);
@@ -123,7 +123,7 @@ const Login = () => {
                     </form>
 
                     <div className="icons">
-                        <button>google sing in</button>
+                        <button onClick={() => handleGoogleSignIn(location , history)}>google sing in</button>
                     </div>
                 </div>
             </div>

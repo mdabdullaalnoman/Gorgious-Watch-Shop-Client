@@ -18,6 +18,9 @@ const useFirebase = () => {
                 const newUser = { email, displayName: name };
                 setUser(newUser);
 
+                // save user info in mongodb data base---------------
+                saveUser(email, name, 'POST')
+
                 // user profile update ------------------------------------
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -25,7 +28,7 @@ const useFirebase = () => {
                 }).catch((error) => {
                     setError('')
                 });
-                
+
                 history.replace('/');
                 setError('');
             })
@@ -63,8 +66,10 @@ const useFirebase = () => {
         const provider = new GoogleAuthProvider();
         signInWithPopup(auth, provider)
             .then((result) => {
+                const user = result.user;
                 const destination = location?.state?.from;
                 history.replace(destination);
+                saveUser(user.email, user.displayName, 'PUT')
                 setError('');
             }).catch((error) => {
                 setError(error.message);
@@ -94,6 +99,18 @@ const useFirebase = () => {
                 setError(error.message)
             })
             .finally(() => setIsLoading(false))
+    }
+
+    //save user -----------------------------------
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:5000/users', {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
     }
     return {
         user,

@@ -18,9 +18,26 @@ import * as React from 'react';
 import { useHistory } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch
+} from "react-router-dom";
+import MakeAdmin from './MakeAdmin';
+import AddProduct from './AddProduct';
+import Pay from '../Pay/Pay';
+import MyOrder from '../MyOrder/MyOrder';
+import Review from '../Home/Review';
+import ReviewUser from '../Review/ReviewUser';
+import Home from '../Home/Home';
+
 const drawerWidth = 240;
 
 function Dashboard(props) {
+    let { path, url } = useRouteMatch();
     const { handleSignOut } = useAuth();
     const history = useHistory();
     const { window } = props;
@@ -39,8 +56,12 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
+            <Box sx={{ textAlign: 'center' }}>
+                <Link to={`${url}/makeAdmin`}>Make Admin</Link> <br />
+                <Link to={`${url}/addProduct`}>Add Product</Link>
+            </Box>
             <List>
-                {['Pay', 'MyOrder', 'Review', 'home'].map((text, index) => (
+                {['Pay', 'MyOrder', 'Review'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -127,9 +148,23 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography paragraph>
-                    <h1>this is dashboard page</h1>
-                </Typography>
+                <Switch>
+                    <Route exact path={`${path}/addProduct`}>
+                        <AddProduct />
+                    </Route>
+                    <Route path={`${path}/makeAdmin`}>
+                        <MakeAdmin />
+                    </Route>
+                    <Route path={`${path}/Pay`}>
+                        <Pay />
+                    </Route>
+                    <Route path={`${path}/MyOrder`}>
+                        <MyOrder />
+                    </Route>
+                    <Route path={`${path}/Review`}>
+                        <ReviewUser />
+                    </Route>
+                </Switch>
             </Box>
         </Box>
     );
