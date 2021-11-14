@@ -22,7 +22,7 @@ import useAuth from '../../Hooks/useAuth';
 const drawerWidth = 240;
 
 function MyOrder(props) {
-    const { user } = useAuth();
+    const { user, handleSignOut } = useAuth();
     const history = useHistory();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -30,7 +30,7 @@ function MyOrder(props) {
 
     // my order (filter by email)------------------------------
     useEffect(() => {
-        fetch(`http://localhost:5000/parches?email=${user.email}`)
+        fetch(`https://thawing-ravine-64043.herokuapp.com/parches?email=${user.email}`)
             .then(res => res.json())
             .then(data => setMyOrder(data))
 
@@ -42,7 +42,7 @@ function MyOrder(props) {
     const handleParchesDelete = (id) => {
         const process = true;
         if (process) {
-            fetch(`http://localhost:5000/parches/${id}`, {
+            fetch(`https://thawing-ravine-64043.herokuapp.com/parches/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -71,12 +71,22 @@ function MyOrder(props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Pay', 'MyOrder', 'Review', 'home', 'Logout'].map((text, index) => (
+                {['Pay', 'MyOrder', 'Review', 'home'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                         </ListItemIcon>
                         <ListItemText onClick={() => handleDashboardRoute(text)} primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <List>
+                {['Logout'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>
+                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        </ListItemIcon>
+                        <ListItemText onClick={handleSignOut} primary={text} />
                     </ListItem>
                 ))}
             </List>

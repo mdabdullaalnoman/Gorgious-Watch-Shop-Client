@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import AuthProvider from './AuthProvider/AuthProvider';
+import AllWatch from './Pages/AllWatch/AllWatch';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
@@ -24,26 +25,29 @@ const App = () => {
           <Route exact path="/home">
             <Home></Home>
           </Route>
-          <Route path="/myOrder">
+          <PrivateRoute path="/myOrder">
             <MyOrder />
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login />
           </Route>
           <PrivateRoute path="/purches">
             <Purches />
           </PrivateRoute>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
-          <Route path="/Pay">
+          </PrivateRoute>
+          <PrivateRoute path="/Pay">
             <Pay />
-          </Route>
-          <Route path="/MyOrder">
+          </PrivateRoute>
+          <PrivateRoute path="/MyOrder">
             <MyOrder />
-          </Route>
-          <Route path="/Review">
+          </PrivateRoute>
+          <PrivateRoute path="/Review">
             <ReviewUser />
+          </PrivateRoute>
+          <Route path="/allWatches">
+            <AllWatch />
           </Route>
           <Route path="*">
             <NoFound />

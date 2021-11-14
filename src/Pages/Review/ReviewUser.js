@@ -1,6 +1,7 @@
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
+import { Button, Container, TextField } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,13 +17,49 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useHistory } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
 
 const drawerWidth = 240;
 
 function ReviewUser(props) {
+    const { handleSignOut, user } = useAuth();
     const history = useHistory();
+    const [ReviewInfo, setReviewInfo] = React.useState({ name: user.displayName, email: user.email });
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+
+
+    const handleReview = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newUser = { ...ReviewInfo }
+        newUser[field] = value;
+        setReviewInfo(newUser);
+        console.log(newUser);
+    }
+
+    const handleReviewSubmit = (e) => {
+        e.preventDefault();
+
+        const ReviewData = { ...ReviewInfo };
+
+        // post Review data ---------------------
+        fetch('https://thawing-ravine-64043.herokuapp.com/review', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(ReviewData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('watch Review successfully')
+                }
+            })
+
+            .catch(error => console.log(error.message))
+    }
 
     // handle dashboard route ---------------------------------
     const handleDashboardRoute = (text) => {
@@ -38,12 +75,22 @@ function ReviewUser(props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Pay', 'MyOrder', 'Review', 'home' , 'Logout'].map((text, index) => (
+                {['Pay', 'MyOrder', 'Review', 'home'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                         </ListItemIcon>
                         <ListItemText onClick={() => handleDashboardRoute(text)} primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <List>
+                {['Logout'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>
+                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        </ListItemIcon>
+                        <ListItemText onClick={handleSignOut} primary={text} />
                     </ListItem>
                 ))}
             </List>
@@ -115,9 +162,55 @@ function ReviewUser(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography paragraph>
-                    <h1>this is Review page</h1>
-                </Typography>
+                <Container>
+                    <form onSubmit={handleReviewSubmit}
+                        style={{ textAlign: 'center', background: 'white', padding: '50px' }}>
+                        <Typography sx={{ p: 3 }} variant="h4" component="h2">
+                            Review Now
+                        </Typography>;
+                        <TextField
+                            id="outlined-password-input"
+                            label="Name"
+                            name="name"
+                            onChange={handleReview}
+                            defaultValue={user.displayName}
+                            type="text"
+                        /><br></br><br />
+                        <TextField
+                            id="outlined-password-input"
+                            label="Email"
+                            name="email"
+                            onChange={handleReview}
+                            defaultValue={user.email}
+                            type="text"
+                        /><br></br><br />
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Description"
+                            name="description"
+                            onChange={handleReview}
+                            multiline
+                            rows={4}
+                        /><br></br><br />
+                        <TextField
+                            id="outlined-password-input"
+                            label="photo url"
+                            name="photoUrl"
+                            onChange={handleReview}
+                            type="text"
+                        /><br></br><br />
+                        <TextField
+                            id="outlined-password-input"
+                            label="rate within 5"
+                            name="rate"
+                            onChange={handleReview}
+                            type="number"
+                        /><br></br><br />
+                        <div>
+                            <Button type="submit" variant="contained" >Review</Button>
+                        </div>
+                    </form>
+                </Container>
             </Box>
         </Box>
     );

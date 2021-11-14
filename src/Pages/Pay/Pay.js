@@ -16,10 +16,12 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useHistory } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
 
 const drawerWidth = 240;
 
 function Pay(props) {
+    const { handleSignOut } = useAuth();
     const history = useHistory();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -38,12 +40,22 @@ function Pay(props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Pay', 'MyOrder', 'Review',, 'home' , 'Logout'].map((text, index) => (
+                {['Pay', 'MyOrder', 'Review','home'].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                         </ListItemIcon>
                         <ListItemText onClick={() => handleDashboardRoute(text)} primary={text} />
+                    </ListItem>
+                ))}
+            </List>
+            <List>
+                {['Logout'].map((text, index) => (
+                    <ListItem button key={text}>
+                        <ListItemIcon>
+                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        </ListItemIcon>
+                        <ListItemText onClick={handleSignOut} primary={text} />
                     </ListItem>
                 ))}
             </List>

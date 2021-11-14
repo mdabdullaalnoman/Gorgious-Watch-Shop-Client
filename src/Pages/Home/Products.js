@@ -6,7 +6,7 @@ const Products = () => {
     const [products, setProduct] = useState([]);
     // load all products ---------------------------------
     useEffect(() => {
-        fetch('http://localhost:5000/watches')
+        fetch('https://thawing-ravine-64043.herokuapp.com/watches')
             .then(res => res.json())
             .then(data => {
                 const firstSix = data.slice(1 , 7);

@@ -24,7 +24,7 @@ const Purches = () => {
         const parchesData = { ...parchesInfo };
 
         // post parches data ---------------------
-        fetch('http://localhost:5000/parches', {
+        fetch('https://thawing-ravine-64043.herokuapp.com/parches', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,10 +42,11 @@ const Purches = () => {
     }
 
     return (
-        <div style={{ background: '#88E0EF' }}>
+        <div style={{ background: '#17161a' }}>
             <Navbar />
             <Container>
-                <form onSubmit={handleParchesSubmit} style={{ textAlign: 'center' }}>
+                <form onSubmit={handleParchesSubmit} 
+                style={{ textAlign: 'center' ,background:'white', padding:'50px'}}>
                     <Typography sx={{ p: 3 }} variant="h4" component="h2">
                         Parches Now
                     </Typography>;
@@ -88,7 +89,7 @@ const Purches = () => {
                         onChange={handleParches}
                         type="text"
                     /> <br /><br />
-                    <div style={{margin:'20px'}}>
+                    <div>
                     <Button type="submit" variant="contained" >Parches</Button>
                     </div>
                 </form>

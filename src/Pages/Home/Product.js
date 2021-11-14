@@ -10,7 +10,6 @@ const Product = ({ pd }) => {
                 <h4>{pd.title}</h4>
                 <p>{pd.price}</p>
                 <Link to="purches"><button>Buy Now</button></Link>
-
             </div>
         </Grid>
     );

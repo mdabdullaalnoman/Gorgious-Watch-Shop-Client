@@ -19,6 +19,6 @@
     font-weight: bold;
 }
 .product button:hover{
-    opacity: 80%;
+    background: var(--lightBlue);
 }
 

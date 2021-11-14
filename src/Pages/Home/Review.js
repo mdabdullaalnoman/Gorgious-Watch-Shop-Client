@@ -2,15 +2,12 @@ import { Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 const Review = () => {
-    const [products, setProduct] = useState([]);
+    const [products, setProducts] = useState([]);
     // load all products ---------------------------------
     useEffect(() => {
-        fetch('http://localhost:5000/watches')
+        fetch('https://thawing-ravine-64043.herokuapp.com/review')
             .then(res => res.json())
-            .then(data => {
-                const firstSix = data.slice(1, 7);
-                setProduct(firstSix);
-            })
+            .then(data => setProducts(data))
 
             .catch(error => console.log(error.message))
     }, []);
@@ -32,10 +29,9 @@ const Review = () => {
                         products.map(pd =>
                             <Grid key={pd._id} item xs={12} sm={6} md={4}>
                                 <div className="product">
-                                    <img src={pd.imgUrl} alt="" />
-                                    <h4>{pd.title}</h4>
-                                    <p>{pd.price}</p>
-                                    <button>Buy Now</button>
+                                    <img src={pd.photoUrl} alt="" />
+                                    <h4>{pd.description}</h4>
+                                    <p> Rating: {pd.rate}</p>
                                 </div>
                             </Grid>
                         )

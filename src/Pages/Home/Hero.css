@@ -35,5 +35,5 @@
     font-weight: bold;
 }
 .hero-warp div button:hover{
-    opacity: 90%;
+    background: var(--lightBlue);
 }
