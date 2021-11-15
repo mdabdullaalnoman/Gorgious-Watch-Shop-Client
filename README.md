@@ -1,6 +1,6 @@
 # A gorgious watch shop website
 
-Gorgious watch shop  [live here](https://github.com/facebook/create-react-app).
+Gorgious watch shop  [live here](https://gorgeous-watch-shop-4b4e1.web.app).
 
 ## website featres
 1. this is a watch shop website
