@@ -4,6 +4,7 @@ import firebaseInitialize from "../Firebase/FirebaseInitilize";
 firebaseInitialize();
 
 const useFirebase = () => {
+    const [admin , setAdmin] = useState(false);
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
@@ -90,6 +91,13 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, []);
 
+    // admin load and check and set is admin ---------------
+    useEffect( () => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+        .then(res => res.json())
+        .then(data => setAdmin(data.admin))
+    },[user.email]);
+
     // Logout user------------------------------------------------
     const handleSignOut = () => {
         signOut(auth)
@@ -119,7 +127,9 @@ const useFirebase = () => {
         handleSignIn,
         handleGoogleSignIn,
         isLoading,
-        error
+        error,
+        setAdmin,
+        admin
     }
 }
 export default useFirebase;

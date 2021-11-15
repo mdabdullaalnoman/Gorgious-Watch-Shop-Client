@@ -7,7 +7,6 @@ import './Navbar.css';
 const Navbar = () => {
 
     const { handleSignOut, user } = useAuth();
-    console.log(user.email);
     // toggle active class on menubar-------------------------------
     const [isActive, setActive] = useState(false);
     const toggleClass = () => {

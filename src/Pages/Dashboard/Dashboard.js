@@ -23,7 +23,6 @@ import {
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import MakeAdmin from './MakeAdmin';
@@ -38,7 +37,7 @@ const drawerWidth = 240;
 
 function Dashboard(props) {
     let { path, url } = useRouteMatch();
-    const { handleSignOut } = useAuth();
+    const { handleSignOut, admin } = useAuth();
     const history = useHistory();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -56,10 +55,13 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Box sx={{ textAlign: 'center' }}>
-                <Link to={`${url}/makeAdmin`}>Make Admin</Link> <br />
-                <Link to={`${url}/addProduct`}>Add Product</Link>
-            </Box>
+            {
+                admin && 
+                <Box sx={{ textAlign: 'center' }}>
+                    <Link to={`${url}/makeAdmin`}>Make Admin</Link> <br />
+                    <Link to={`${url}/addProduct`}>Add Product</Link>
+                </Box>
+            }
             <List>
                 {['Pay', 'MyOrder', 'Review'].map((text, index) => (
                     <ListItem button key={text}>
