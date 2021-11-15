@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# A gorgious watch shop website
 
 Gorgious watch shop  [live here](https://github.com/facebook/create-react-app).
 
