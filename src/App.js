@@ -8,9 +8,11 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute';
+import ManageProduct from './Pages/ManageProduct/ManageProduct';
 import MyOrder from './Pages/MyOrder/MyOrder';
 import NoFound from './Pages/NotFound/NoFound';
 import Pay from './Pages/Pay/Pay';
+import Payment from './Pages/Payment/Payment';
 import Purches from './Pages/Purches/Purches';
 import ReviewUser from './Pages/Review/ReviewUser';
 
@@ -36,6 +38,21 @@ const App = () => {
           </PrivateRoute>
           <Route path="/allWatches">
             <AllWatch />
+          </Route>
+          <Route path="/manageProduct">
+            <ManageProduct />
+          </Route>
+          <Route path="/Pay">
+            <Pay />
+          </Route>
+          <Route path="/MyOrder">
+            <MyOrder />
+          </Route>
+          <Route path="/Review">
+            <ReviewUser />
+          </Route>
+          <Route path="/dashboard/payment/:paymentId">
+            <Payment />
           </Route>
           <Route path="*">
             <NoFound />

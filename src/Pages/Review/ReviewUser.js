@@ -1,13 +1,11 @@
 
 import { Button, Container, TextField, Typography } from '@mui/material';
 import * as React from 'react';
-import { useHistory } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
 
 function ReviewUser(props) {
-    const { handleSignOut, user } = useAuth();
-    const history = useHistory();
+    const { user } = useAuth();
     const [ReviewInfo, setReviewInfo] = React.useState({ name: user.displayName, email: user.email });
 
 
@@ -43,13 +41,6 @@ function ReviewUser(props) {
 
             .catch(error => console.log(error.message))
     }
-
-    // handle dashboard route ---------------------------------
-    const handleDashboardRoute = (text) => {
-        history.push(text);
-    };
-
-
 
     return (
         <Container>

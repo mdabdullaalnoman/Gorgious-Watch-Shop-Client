@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Container, TextField, Typography } from '@mui/material';
-import useAuth from '../../Hooks/useAuth';
 
 const AddProduct = () => {
-
-    const { user } = useAuth();
     const [parchesInfo, setParchesInfo] = useState({});
 
     const handleParches = (e) => {
@@ -22,7 +19,7 @@ const AddProduct = () => {
         const parchesData = { ...parchesInfo };
 
         // // post parches data ---------------------
-        fetch('http://localhost:5000/watches', {
+        fetch('https://thawing-ravine-64043.herokuapp.com/watches', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

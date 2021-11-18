@@ -17,3 +17,6 @@
 .good-watch-content button:hover{
     background: var(--lightBlue);
 }
+.good-watch-img img{
+    width: 100%;
+}

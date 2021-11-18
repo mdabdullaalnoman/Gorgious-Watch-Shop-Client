@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Alert } from '@mui/material';
-import { CheckCircleOutline } from '@mui/icons-material';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
@@ -14,7 +13,7 @@ const MakeAdmin = () => {
         e.preventDefault();
         const user = { email };
 
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://thawing-ravine-64043.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -19,7 +19,6 @@ import { useHistory } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
@@ -29,9 +28,10 @@ import MakeAdmin from './MakeAdmin';
 import AddProduct from './AddProduct';
 import Pay from '../Pay/Pay';
 import MyOrder from '../MyOrder/MyOrder';
-import Review from '../Home/Review';
 import ReviewUser from '../Review/ReviewUser';
-import Home from '../Home/Home';
+import ManageProduct from '../ManageProduct/ManageProduct';
+import AdminRoute from '../Login/AdminRoute';
+import Payment from '../Payment/Payment';
 
 const drawerWidth = 240;
 
@@ -55,11 +55,13 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
+
             {
-                admin && 
+                admin &&
                 <Box sx={{ textAlign: 'center' }}>
                     <Link to={`${url}/makeAdmin`}>Make Admin</Link> <br />
-                    <Link to={`${url}/addProduct`}>Add Product</Link>
+                    <Link to={`${url}/addProduct`}>Add Product</Link><br />
+                    <Link to={`${url}/manageProduct`}>Manage Product</Link>
                 </Box>
             }
             <List>
@@ -151,20 +153,26 @@ function Dashboard(props) {
             >
                 <Toolbar />
                 <Switch>
-                    <Route exact path={`${path}/addProduct`}>
+                    <AdminRoute exact path={`${path}/addProduct`}>
                         <AddProduct />
-                    </Route>
-                    <Route path={`${path}/makeAdmin`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin />
-                    </Route>
+                    </AdminRoute>
                     <Route path={`${path}/Pay`}>
                         <Pay />
                     </Route>
-                    <Route path={`${path}/MyOrder`}>
+                    <Route exact path={`${path}/MyOrder`}>
                         <MyOrder />
                     </Route>
-                    <Route path={`${path}/Review`}>
+                    <Route exact path={`${path}/Review`}>
                         <ReviewUser />
+                    </Route>
+                    <Route exact path={`${path}/manageProduct`}>
+                        <ManageProduct />
+                    </Route>
+                    <Route exact path={`${path}/payment/:paymentId`}>
+                        <Payment />
                     </Route>
                 </Switch>
             </Box>

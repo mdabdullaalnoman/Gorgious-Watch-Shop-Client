@@ -34,7 +34,6 @@ const useFirebase = () => {
                 setError('');
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
                 setError(errorMessage);
             })
@@ -53,7 +52,6 @@ const useFirebase = () => {
                 setError('');
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
                 setError(errorMessage);
             })
@@ -89,11 +87,11 @@ const useFirebase = () => {
         })
 
         return () => unsubscribed;
-    }, []);
+    }, [auth]);
 
     // admin load and check and set is admin ---------------
     useEffect( () => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://thawing-ravine-64043.herokuapp.com/users/${user.email}`)
         .then(res => res.json())
         .then(data => setAdmin(data.admin))
     },[user.email]);
@@ -112,7 +110,7 @@ const useFirebase = () => {
     //save user -----------------------------------
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://thawing-ravine-64043.herokuapp.com/users', {
             method: method,
             headers: {
                 'Content-Type': 'application/json'

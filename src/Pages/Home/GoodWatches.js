@@ -17,7 +17,7 @@ const GoodWatches = () => {
                             <button>learn more</button>
                         </div>
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid className="good-watch-img" item xs={12} md={6}>
                         <img src="https://i.imgur.com/nAgPoKn.jpg" alt="" />
                     </Grid>
                 </Grid>

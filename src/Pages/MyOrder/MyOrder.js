@@ -1,6 +1,7 @@
 
 import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 function MyOrder(props) {
@@ -14,7 +15,7 @@ function MyOrder(props) {
             .then(data => setMyOrder(data))
 
             .catch(err => console.log(err.message))
-    }, [myOrder]);
+    }, [myOrder , user.email]);
 
 
     // delete products ----------------------------------------
@@ -47,11 +48,11 @@ function MyOrder(props) {
                             <h2>{data?.title}</h2>
                             <h4>{data?.price}</h4>
                             <button onClick={() => handleParchesDelete(data?._id)}>Cancel</button>
+                            <Link to={`payment/${data._id}`}>{data.payment ? 'paid' : 'pay'}</Link>
                         </div>
                     </Grid>
                 )
             }
-            <h1>this is my order</h1>
         </Grid>
     );
 }
