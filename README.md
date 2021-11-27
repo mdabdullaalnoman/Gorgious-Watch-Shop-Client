@@ -1,10 +1,13 @@
-# A gorgious watch shop website
+# Gorgeous Watch Shop (MERN)
 
-Gorgious watch shop  [live here](https://gorgeous-watch-shop-4b4e1.web.app).
+Gorgeous watch shop  [live here](https://gorgeous-watch-shop-4b4e1.web.app).
 
-## website featres
-1. this is a watch shop website
-2. see 6 products in home page
-3. user can purches watch
-4. admin can add new products
-5. admin convert a new admin
+## website features
+## Technologies:
+ReactJS, ExpressJS, Javascript, ES6, MongoDB, MaterialUI, Firebase, Heroku 
+
+1. A fully functional MERN stack e-commerce watch shop to buy products.
+2. Admins can add and delete products and make an admin.
+3. Role-based authentication for user and admin. Also, a different dashboard for admin.
+4. Allowed users can give reviews and it will show on the homepage.
+5. Users can order products and can see their own order in the user's dashboard and can cancel orders.
